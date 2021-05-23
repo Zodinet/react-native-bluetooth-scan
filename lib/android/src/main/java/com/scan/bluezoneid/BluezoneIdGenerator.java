@@ -42,11 +42,11 @@ public class BluezoneIdGenerator {
      * @return
      */
     public byte[] getBluezoneId() {
-        if (BluezoneIdConstants.Config.IS_ROLLING_ID) {
-            return rollingBluezoneId();
+        IdRepo idRepo = IdRepo(this);
+        if (idRepo.id == "null") {
+            idRepo.id = this.randomBluezoneId();
         }
-
-        return randomBluezoneId().getBytes();
+        return idRepo.id.getBytes();
     }
 
     /**
