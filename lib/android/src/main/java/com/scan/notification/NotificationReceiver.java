@@ -42,7 +42,7 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         Notification notification = new NotificationCompat.Builder(context, AppConstants.NOTIFICATION_CHANNEL_ID)
                 .setPriority(PRIORITY_MIN)
-                .setSmallIcon(R.mipmap.icon_bluezone_service)
+                .setSmallIcon(R.mipmap.icon_healthyvn_service)
                 .setSubText(subText) // Sub text
                 .setContentTitle(title) // title
                 .setContentText(message) // bigText

@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.scan.AppUtils;
 import com.scan.preference.AppPreferenceManager;
+import com.scan.bluezoneid.IdRepo;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

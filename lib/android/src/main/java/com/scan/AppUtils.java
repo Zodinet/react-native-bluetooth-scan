@@ -226,7 +226,7 @@ public class AppUtils {
                 .setContentTitle(title)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(content))
                 .setContentText(content)
-                .setSmallIcon(R.mipmap.icon_bluezone_service)
+                .setSmallIcon(R.mipmap.icon_healthyvn_service)
                 .setContentIntent(pendingIntent);
 //                .setNumber(AppConstants.NOTIFY_SERVICE_NUMBER);
     }
@@ -245,7 +245,7 @@ public class AppUtils {
 //                .setSubText(notifyInfoMap.get("subText") + "Now") // Sub text
 //                .setContentTitle(notifyInfoMap.get("title") + "Now") // Big text
 //                .setContentText(notifyInfoMap.get("message") + "Now") // Title
-//                .setSmallIcon(R.mipmap.icon_bluezone_service)
+//                .setSmallIcon(R.mipmap.icon_healthyvn_service)
 //                .setContentIntent(pendingIntent)
 //                .build();
 //        manager.notify(AppConstants.NOTIFICATION_BLUETOOTH_BLUE_ZONE_ID, notificationBuider);
