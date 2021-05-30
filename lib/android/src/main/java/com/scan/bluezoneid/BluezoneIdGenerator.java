@@ -43,11 +43,11 @@ public class BluezoneIdGenerator {
      * @return
      */
     public byte[] getBluezoneId() {
-        IdRepo idRepo = IdRepo(this);
-        if (idRepo.id == "null") {
-            idRepo.id = this.randomBluezoneId();
+        IdRepo idRepo = new IdRepo(this);
+        if (idRepo.getId() == "null") {
+            idRepo.setId(this.randomBluezoneId());
         }
-        return idRepo.id.getBytes();
+        return idRepo.getId().getBytes();
     }
 
     /**
