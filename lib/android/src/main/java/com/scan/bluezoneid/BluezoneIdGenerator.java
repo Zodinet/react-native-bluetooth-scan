@@ -43,11 +43,13 @@ public class BluezoneIdGenerator {
      * @return
      */
     public byte[] getBluezoneId() {
-        IdRepo idRepo = new IdRepo(this);
-        if (idRepo.getId() == "null") {
-            idRepo.setId(this.randomBluezoneId());
+        String vietNamHealthyId = mPreferenceManager.getString("VietNamHealthyId", "");
+        if (!TextUtils.isEmpty(vietNamHealthyId)) {
+            return vietNamHealthyId.getBytes();
         }
-        return idRepo.getId().getBytes();
+        String newId = this.randomBluezoneId();
+        mPreferenceManager.putString("VietNamHealthyId", newId);
+        return newId.getBytes();
     }
 
     /**
