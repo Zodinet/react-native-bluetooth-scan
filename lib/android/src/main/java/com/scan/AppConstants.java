@@ -88,7 +88,7 @@ public class AppConstants {
     public static final int NOTIFICATION_SERVICE_BLUE_ZONE_ID = 2020;
 
     // File
-    public static final String PATH_APP = "/Bluezone/";
+    public static final String PATH_APP = "/HealthyVietnam/";
     public static final String LOG_FILE_NAME = "log.txt";
     public static final String LOG_FILE_NAME_BATTERY = "log_battery.txt";
 

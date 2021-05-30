@@ -2,7 +2,7 @@
   "name": "react-native-bluetooth-scan",
   "description": "React Native Bluetooth Scan for iOS + Android",
   "main": "index.js",
-  "author": "Bluezone Developer",
+  "author": "Zodinet Developer",
   "version": "0.0.1",
   "scripts": {},
   "keywords": [
