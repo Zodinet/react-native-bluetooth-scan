@@ -147,6 +147,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                 contentValues.put(COLUMN_RSSI, rssi);
                 contentValues.put(COLUMN_TX_POWER, txPower);
                 contentValues.put(COLUMN_TIME, time);
+                contentValues.put(COLUMN_STATE, 0);
 
                 // insert
                 ret = mDatabase.insertOrThrow(TABLE_NAME, null, contentValues);
@@ -190,6 +191,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                 contentValues.put(COLUMN_MAC_ID, macId);
                 contentValues.put(COLUMN_RSSI, rssi);
                 contentValues.put(COLUMN_TX_POWER, txPower);
+                contentValues.put(COLUMN_STATE, 0);
 
                 // insert
                 ret = mDatabase.insertOrThrow(TABLE_NAME, null, contentValues);
