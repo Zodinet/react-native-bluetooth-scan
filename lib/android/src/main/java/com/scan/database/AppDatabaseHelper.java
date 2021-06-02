@@ -22,7 +22,7 @@ import java.util.Set;
  */
 public class AppDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "app_db_2.db";
+    private static final String DATABASE_NAME = "app_db_g1.db";
     public static final int DATABASE_VERSION = 1;
 
     // Table trace

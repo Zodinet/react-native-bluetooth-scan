@@ -45,11 +45,13 @@ public class BluezoneIdGenerator {
     public byte[] getBluezoneId() {
         String vietNamHealthyId = mPreferenceManager.getString("VietNamHealthyId", "");
         if (!TextUtils.isEmpty(vietNamHealthyId)) {
-            return vietNamHealthyId.getBytes();
+            byte[] id = Base64.getDecoder().decode(vietNamHealthyId.getBytes());
+            return id;
         }
-        String newId = this.randomBluezoneId();
+        byte[] keyByte = createBluezoneBaseId();
+        String newId = new String(Base64.getEncoder().encode(keyByte));
         mPreferenceManager.putString("VietNamHealthyId", newId);
-        return newId.getBytes();
+        return keyByte;
     }
 
     /**
