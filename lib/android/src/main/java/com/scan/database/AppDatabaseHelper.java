@@ -36,6 +36,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_STATE = "state";
     public static final String COLUMN_TIME = "timestamp";
     public static final String COLUMN_BLID_STRING = "blid_string"; // User Code
+    public static final String COLUMN_BLID_CONTACT_STRING = "blid_contact_string";
 
     // Index
     public static final int COLUMN_INDEX_BLID = 1;
@@ -89,6 +90,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                     + COLUMN_BLID + " BLOB,"
                     + COLUMN_BLID_CONTACT + " BLOB,"
                     + COLUMN_BLID_STRING + " text,"
+                    + COLUMN_BLID_CONTACT_STRING + " text,"
                     + COLUMN_MAC_ID + " text,"
                     + COLUMN_RSSI + " integer,"
                     + COLUMN_TX_POWER + " integer,"
@@ -144,11 +146,13 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                 long time = System.currentTimeMillis();
                 byte[] blid = BluezoneIdGenerator.getInstance(mContext).getBluezoneId();
                 String ownerIdString = new String(Base64.getEncoder().encode(blid));
+                String contactIdString = new String(Base64.getEncoder().encode(blidContact));
 
                 // Data insert
                 final ContentValues contentValues = new ContentValues();
                 contentValues.put(COLUMN_BLID, blid);
                 contentValues.put(COLUMN_BLID_STRING, ownerIdString);
+                contentValues.put(COLUMN_BLID_CONTACT_STRING, contactIdString);
                 contentValues.put(COLUMN_BLID_CONTACT, blidContact);
                 contentValues.put(COLUMN_RSSI, rssi);
                 contentValues.put(COLUMN_TX_POWER, txPower);
@@ -195,6 +199,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                 final ContentValues contentValues = new ContentValues();
                 contentValues.put(COLUMN_BLID, blid);
                 contentValues.put(COLUMN_BLID_STRING, ownerIdString);
+                contentValues.put(COLUMN_BLID_CONTACT_STRING, "");
                 contentValues.put(COLUMN_TIME, time);
                 contentValues.put(COLUMN_MAC_ID, macId);
                 contentValues.put(COLUMN_RSSI, rssi);

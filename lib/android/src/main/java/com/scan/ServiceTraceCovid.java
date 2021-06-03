@@ -1316,19 +1316,19 @@ public class ServiceTraceCovid extends Service {
                             super.onCharacteristicRead(gatt, characteristic, status);
                             if (gatt != null) {
                                 // Read Blid
-                                byte[] bluezoneId = characteristic.getValue();
+                                byte[] blidContact = characteristic.getValue();
 
                                 // check
                                 if (BluezoneIdUtils.isBluezoneIdValidate(characteristic.getValue())) {
 
                                     // Insert db
-                                    AppDatabaseHelper.getInstance(getApplicationContext()).insertInfoTrace(bluezoneId, scanResult.getRssi(), 0);
+                                    AppDatabaseHelper.getInstance(getApplicationContext()).insertInfoTrace(blidContact, scanResult.getRssi(), 0);
 
                                     // Ghi ban len he thong
-                                    moduleManager.emit(AppUtils.convertBytesToHex(bluezoneId), "", "", scanResult.getRssi(), AppConstants.PLATFORM_IOS, 1);
+                                    moduleManager.emit(AppUtils.convertBytesToHex(blidContact), "", "", scanResult.getRssi(), AppConstants.PLATFORM_IOS, 1);
 
                                     // insert cache
-                                    CacheDatabaseHelper.getInstance(getApplicationContext()).insertConnected(bluezoneId, gatt.getDevice().getAddress());
+                                    CacheDatabaseHelper.getInstance(getApplicationContext()).insertConnected(blidContact, gatt.getDevice().getAddress());
 
                                     // out
                                     mIsConnect = false;
