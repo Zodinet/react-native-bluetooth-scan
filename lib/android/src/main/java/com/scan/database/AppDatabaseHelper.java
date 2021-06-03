@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Base64;
 
 /**
  * @author khanhxu
@@ -34,6 +35,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TX_POWER = "tx_power";
     public static final String COLUMN_STATE = "state";
     public static final String COLUMN_TIME = "timestamp";
+    public static final String COLUMN_BLID_STRING = "blid_string"; // User Code
 
     // Index
     public static final int COLUMN_INDEX_BLID = 1;
@@ -86,6 +88,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                     TABLE_NAME + " (" + BaseColumns._ID + " integer primary key autoincrement,"
                     + COLUMN_BLID + " BLOB,"
                     + COLUMN_BLID_CONTACT + " BLOB,"
+                    + COLUMN_BLID_STRING + " text,"
                     + COLUMN_MAC_ID + " text,"
                     + COLUMN_RSSI + " integer,"
                     + COLUMN_TX_POWER + " integer,"
@@ -139,16 +142,18 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
             try {
                 long time = System.currentTimeMillis();
+                byte[] blid = BluezoneIdGenerator.getInstance(mContext).getBluezoneId();
+                String ownerIdString = new String(Base64.getEncoder().encode(blid));
 
                 // Data insert
                 final ContentValues contentValues = new ContentValues();
-                contentValues.put(COLUMN_BLID, BluezoneIdGenerator.getInstance(mContext).getBluezoneId());
+                contentValues.put(COLUMN_BLID, blid);
+                contentValues.put(COLUMN_BLID_STRING, ownerIdString);
                 contentValues.put(COLUMN_BLID_CONTACT, blidContact);
                 contentValues.put(COLUMN_RSSI, rssi);
                 contentValues.put(COLUMN_TX_POWER, txPower);
                 contentValues.put(COLUMN_TIME, time);
                 contentValues.put(COLUMN_STATE, 0);
-
                 // insert
                 ret = mDatabase.insertOrThrow(TABLE_NAME, null, contentValues);
             } catch (Exception e) {
@@ -183,10 +188,13 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
             try {
                 long time = System.currentTimeMillis();
+                byte[] blid = BluezoneIdGenerator.getInstance(mContext).getBluezoneId();
+                String ownerIdString = new String(Base64.getEncoder().encode(blid));
 
                 // Data insert
                 final ContentValues contentValues = new ContentValues();
-                contentValues.put(COLUMN_BLID, BluezoneIdGenerator.getInstance(mContext).getBluezoneId());
+                contentValues.put(COLUMN_BLID, blid);
+                contentValues.put(COLUMN_BLID_STRING, ownerIdString);
                 contentValues.put(COLUMN_TIME, time);
                 contentValues.put(COLUMN_MAC_ID, macId);
                 contentValues.put(COLUMN_RSSI, rssi);
