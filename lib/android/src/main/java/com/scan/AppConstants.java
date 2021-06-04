@@ -71,7 +71,7 @@ public class AppConstants {
     }
 
     // UUID Cần phát và bắt
-    public static final String BLUEZONE_UUID = "4E58"; // VN
+    public static final String BLUEZONE_UUID = "4E56"; // VN
     public static final int BLE_ID = 8885; // XU
     public static final String BLE_UUID_IOS = "0000" + BLUEZONE_UUID + "-73F5-4BC4-A12F-17D1AD07A667";
     public static final String BLE_UUID_ANDROID = "0000" + BLUEZONE_UUID + "-0000-1000-8000-00805F9B34FB";
